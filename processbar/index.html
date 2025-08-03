@@ -19,53 +19,59 @@
       margin: 0 auto;
       height: 30px;
       overflow: hidden;
+      box-shadow: 0 0 10px #00f5a0;
     }
 
     .bar-fill {
       height: 100%;
       width: 0%;
       background: linear-gradient(to right, #00f5a0, #00d9f5);
-      transition: width 2s ease-in-out;
+      transition: width 0.4s ease;
     }
 
     .percent {
       margin-top: 20px;
-      font-size: 20px;
+      font-size: 24px;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
+
+  <h1>🔥 Loading...</h1>
+
   <div class="bar-container">
     <div class="bar-fill" id="bar"></div>
   </div>
+
   <div class="percent" id="percent">0%</div>
+
   <script>
-    function getTokenPercent() {
+    function getParams() {
       const urlParams = new URLSearchParams(window.location.search);
-      let value = parseInt(urlParams.get('token'));
-      if (isNaN(value) || value < 0) value = 0;
-      if (value > 100) value = 100;
-      return value;
+      let percent = parseInt(urlParams.get('token'));
+      let delay = parseFloat(urlParams.get('delay')) * 1000;
+
+      if (isNaN(percent) || percent < 0) percent = 0;
+      if (percent > 100) percent = 100;
+      if (isNaN(delay) || delay < 0) delay = 500; // fallback delay
+
+      return { percent, delay };
     }
 
-    function animateProgress(target) {
-      let current = 0;
+    async function animateProgress(target, delay) {
       const bar = document.getElementById('bar');
       const percentText = document.getElementById('percent');
 
-      const interval = setInterval(() => {
-        if (current >= target) {
-          clearInterval(interval);
-        } else {
-          current++;
-          bar.style.width = current + "%";
-          percentText.innerText = current + "%";
-        }
-      }, 20); // Speed (20ms per step)
+      for (let current = 0; current <= target; current++) {
+        bar.style.width = current + "%";
+        percentText.innerText = current + "%";
+        await new Promise(resolve => setTimeout(resolve, delay));
+      }
     }
 
-    const targetPercent = getTokenPercent();
-    setTimeout(() => animateProgress(targetPercent), 500);
+    const { percent, delay } = getParams();
+    setTimeout(() => animateProgress(percent, delay), 300);
   </script>
 
 </body>
