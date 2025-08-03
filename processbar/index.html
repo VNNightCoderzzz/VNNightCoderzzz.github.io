@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Progress Bar</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #0f172a;
+      color: #fff;
+      text-align: center;
+      padding-top: 100px;
+    }
+
+    .bar-container {
+      width: 80%;
+      background-color: #1e293b;
+      border-radius: 10px;
+      margin: 0 auto;
+      height: 30px;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(to right, #00f5a0, #00d9f5);
+      transition: width 2s ease-in-out;
+    }
+
+    .percent {
+      margin-top: 20px;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="bar-container">
+    <div class="bar-fill" id="bar"></div>
+  </div>
+  <div class="percent" id="percent">0%</div>
+  <script>
+    function getTokenPercent() {
+      const urlParams = new URLSearchParams(window.location.search);
+      let value = parseInt(urlParams.get('token'));
+      if (isNaN(value) || value < 0) value = 0;
+      if (value > 100) value = 100;
+      return value;
+    }
+
+    function animateProgress(target) {
+      let current = 0;
+      const bar = document.getElementById('bar');
+      const percentText = document.getElementById('percent');
+
+      const interval = setInterval(() => {
+        if (current >= target) {
+          clearInterval(interval);
+        } else {
+          current++;
+          bar.style.width = current + "%";
+          percentText.innerText = current + "%";
+        }
+      }, 20); // Speed (20ms per step)
+    }
+
+    const targetPercent = getTokenPercent();
+    setTimeout(() => animateProgress(targetPercent), 500);
+  </script>
+
+</body>
+</html>
