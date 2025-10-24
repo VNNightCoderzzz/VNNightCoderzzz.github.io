@@ -1,35 +1,23 @@
 {
-  "updated": "2025-10-24T15:40:00Z",
+  "updated": "2025-10-24T15:40:00.123Z",
   "services": [
     {
-      "id": "auth",
-      "name": "Authentication",
-      "desc": "Login, token và session",
+      "id": "offsets",
+      "name": "Offsets",
+      "desc": "Use Offsets To Injecting",
       "status": "ok"
     },
     {
-      "id": "api",
-      "name": "API Gateway",
-      "desc": "Endpoint chính (v1/v2)",
+      "id": "ui",
+      "name": "UI",
+      "desc": "External UI",
       "status": "ok"
     },
     {
-      "id": "db",
-      "name": "Database",
-      "desc": "Primary DB cluster",
-      "status": "warn"
-    },
-    {
-      "id": "cdn",
-      "name": "CDN",
-      "desc": "Static assets & media",
+      "id": "endpoint",
+      "name": "Endpoint",
+      "desc": "Endpoint /v1, /v2 and /v3",
       "status": "ok"
-    },
-    {
-      "id": "payments",
-      "name": "Payments",
-      "desc": "Thanh toán & hoá đơn",
-      "status": "down"
     }
   ]
 }
