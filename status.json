@@ -1,0 +1,35 @@
+{
+  "updated": "2025-10-24T15:40:00Z",
+  "services": [
+    {
+      "id": "auth",
+      "name": "Authentication",
+      "desc": "Login, token và session",
+      "status": "ok"
+    },
+    {
+      "id": "api",
+      "name": "API Gateway",
+      "desc": "Endpoint chính (v1/v2)",
+      "status": "ok"
+    },
+    {
+      "id": "db",
+      "name": "Database",
+      "desc": "Primary DB cluster",
+      "status": "warn"
+    },
+    {
+      "id": "cdn",
+      "name": "CDN",
+      "desc": "Static assets & media",
+      "status": "ok"
+    },
+    {
+      "id": "payments",
+      "name": "Payments",
+      "desc": "Thanh toán & hoá đơn",
+      "status": "down"
+    }
+  ]
+}
