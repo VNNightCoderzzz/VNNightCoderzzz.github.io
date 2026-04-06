@@ -1,7 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>net</groupId>
-  <artifactId>vnnhattruongneeelib</artifactId>
+  <groupId>net.vnnhattruongneee</groupId> <artifactId>vnnhattruongneeelib</artifactId>
   <version>0.10.2</version>
 </project>
